@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    h1 {
+      color: #333;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+    }
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+    .author {
+      font-style: italic;
+      color: #777;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .author-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .created-at {
+      font-size: 14px;
+      color: #888;
+      margin-top: 10px;
+      display: block;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+    ul li a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    ul li a:hover {
+      text-decoration: underline;
+    }
+    h2 {
+      color: #333;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+      margin-top: 40px;
+    }
+    .comments {
+      margin-bottom: 20px;
+    }
+    .add-comment {
+      margin-top: 20px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .tags {
+      margin-top: 20px;
+    }
+    .tag {
+      display: inline-block;
+      background-color: #007bff;
+      color: #ffffff;
+      padding: 5px 10px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      border-radius: 15px;
+      font-size: 14px;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/articles" class="button">All Articles</a>
+    <h1><%= @article.title %></h1>
+
+    <p class="author">
+      <% if @article.user.image.attached? %>
+        <%= image_tag @article.user.image, alt: "#{@article.user.name}'s profile picture", class: "author-image" %>
+      <% else %>
+        <%= image_tag "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg", alt: "Default profile picture", class: "author-image" %>
+      <% end %>
+      Author: <%= @article.user.name %>
+    </p>
+
+    <p class="created-at">Created at: <%= @article.created_at.strftime("%B %d, %Y %H:%M") %></p>
+
+    <p><%= @article.body %></p>
+    
+    <!-- Tags Section -->
+    <div class="tags">
+      <h2>Tags:</h2>
+      <% if @article.tags.any? %>
+        <% @article.tags.each do |tag| %>
+          <span class="tag"><%= tag.name %></span>
+        <% end %>
+      <% else %>
+        <p>No tags available.</p>
+      <% end %>
+    </div>
+
+    <ul>
+      <% if is_owner(@article) %>
+        <li><%= link_to "Edit", edit_article_path(@article), class: 'button' %></li>
+        <li><%= link_to "Destroy", article_path(@article), class: 'button', data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></li>
+      <% end %>
+    </ul>
+
+    <h2>Comments</h2>
+    <div class="comments">
+      <%= render @article.comments %>
+    </div>
+    <h2>Add a comment:</h2>
+    <div class="add-comment">
+      <%= render 'comments/form' %>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    h1 {
+      color: #333;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+    }
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+    .article-count {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      flex: 1 1 calc(33.333% - 20px);
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      box-sizing: border-box;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .card-title {
+      font-size: 20px;
+      color: #007bff;
+      margin: 0;
+    }
+    .card-link {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .card-link:hover {
+      text-decoration: underline;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Articles</h1>
+    <p class="article-count">Our blog has <%= Article.public_count %> articles and counting!</p>
+    <div class="card-container">
+      <% @articles.each do |article| %>
+        <% unless article.archived? %>
+          <div class="card">
+            <h2 class="card-title"><%= link_to article.title, article, class: 'card-link' %></h2>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= link_to "New Article", new_article_path, class: 'button' %>
+  </div>
+</body>
+</html>

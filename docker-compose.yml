@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+  database:
+    image: postgres:16
+    volumes:
+      - db_pg_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_PASSWORD: blogpg
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    depends_on:
+      - database
+      - redis
+    environment:
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+      REDIS_URL: redis://redis:6379/1
+    env_file:
+      - .env
+  web:
+    build: .
+    command: rails server -b 0.0.0.0
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+      - redis
+      - sidekiq
+    environment:
+      DATABASE_URL: postgres://blogpg:blogpg@database:5432/blogpg_development
+      REDIS_URL: redis://redis:6379/1
+    env_file:
+      - .env
+
+      
+
+volumes:
+  db_pg_data:

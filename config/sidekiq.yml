@@ -1,0 +1,10 @@
+:concurrency: 5
+:queues:
+  - default
+  - mailers
+
+:scheduler:
+  :schedule:
+    post_deletion_job:
+      cron: "* * * * *" 
+      class: "PostDeletionJob"
