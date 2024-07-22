@@ -36,12 +36,12 @@ Make sure you have the following installed on your machine:
 4. **Start the Rails server:**
 
     ```sh
-    docker-compose exec web rails server -b 0.0.0.0
+    rails server
     ```
 
 ### Usage
 
-- The application should now be running on [http://localhost:3000](http://localhost:3000).
+- The application should now be running on [http://localhost:3005](http://localhost:3005).
 - You can create, read, update, and delete articles and comments.
 - Authentication is handled using JWT. 
 
