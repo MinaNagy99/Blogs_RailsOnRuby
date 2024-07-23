@@ -19613,7 +19613,7 @@ Completed 200 OK in 486ms (Views: 133.9ms | ActiveRecord: 175.4ms | Allocations:
 Started POST "/logout" for 127.0.0.1 at 2024-07-22 18:59:30 +0300
 Processing by UsersController#log_out as TURBO_STREAM
   Parameters: {"authenticity_token"=>"[FILTERED]"}
-Redirected to http://127.0.0.1:3005/login
+Redirected to http://127.0.0.1:/login
 Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 288)
 
 
@@ -27790,5 +27790,220 @@ Processing by ArticlesController#new as HTML
   Rendered articles/new.html.erb within layouts/application (Duration: 11.7ms | Allocations: 3843)
   Rendered layout layouts/application.html.erb (Duration: 20.1ms | Allocations: 5037)
 Completed 200 OK in 26ms (Views: 17.3ms | ActiveRecord: 4.3ms | Allocations: 5784)
+
+
+Started GET "/" for 127.0.0.1 at 2024-07-23 13:18:19 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (17.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 38.6ms | Allocations: 4820)
+  Rendered layout layouts/application.html.erb (Duration: 132.1ms | Allocations: 39957)
+Completed 200 OK in 426ms (Views: 143.4ms | ActiveRecord: 106.8ms | Allocations: 68908)
+
+
+Started GET "/login" for 127.0.0.1 at 2024-07-23 13:18:22 +0300
+Processing by UsersController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login.html.erb within layouts/application
+  Rendered users/login.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2763)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3866)
+Completed 200 OK in 11ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 4184)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2024-07-23 13:18:23 +0300
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1152)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2255)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 2525)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-07-23 13:18:23 +0300
+Processing by UsersController#login as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"minanagykhalefa@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (272.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minanagykhalefa@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `login'
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from encode at D:/blogpg/lib/json_web_token.rb:7)
+Redirected to http://127.0.0.1:3005/articles
+Completed 302 Found in 505ms (ActiveRecord: 273.9ms | Allocations: 4537)
+
+
+Started GET "/articles" for 127.0.0.1 at 2024-07-23 13:18:24 +0300
+Processing by ArticlesController#index as TURBO_STREAM
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode at D:/blogpg/lib/json_web_token.rb:12)
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode at D:/blogpg/lib/json_web_token.rb:12)
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode at D:/blogpg/lib/json_web_token.rb:12)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `load_current_user!'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Count (71.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."status" = $1[0m  [["status", "public"]]
+  ↳ app/models/concerns/visible.rb:12:in `public_count'
+  [1m[36mArticle Load (1.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:91
+  Rendered articles/index.html.erb within layouts/application (Duration: 157.9ms | Allocations: 8345)
+  Rendered layout layouts/application.html.erb (Duration: 161.8ms | Allocations: 9700)
+Completed 200 OK in 194ms (Views: 35.6ms | ActiveRecord: 131.8ms | Allocations: 16060)
+
+
+Started GET "/articles/41" for 127.0.0.1 at 2024-07-23 13:18:26 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"41"}
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode at D:/blogpg/lib/json_web_token.rb:12)
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode at D:/blogpg/lib/json_web_token.rb:12)
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode at D:/blogpg/lib/json_web_token.rb:12)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `load_current_user!'
+  [1m[36mArticle Load (1.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:48:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:115
+  [1m[36mActiveStorage::Attachment Load (14.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:115
+  [1m[36mActiveStorage::Blob Load (2.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:116
+  [1m[36mTag Exists? (46.4ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" INNER JOIN "articles_tags" ON "tags"."id" = "articles_tags"."tag_id" WHERE "articles_tags"."article_id" = $1 LIMIT $2[0m  [["article_id", 41], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:130
+  [1m[36mComment Load (26.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 41]]
+  ↳ app/views/articles/show.html.erb:148
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/_comment.html.erb:4
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/comments/_comment.html.erb:4
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/comments/_comment.html.erb:5
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 21.0ms | Allocations: 3927)
+  Rendered comments/_form.html.erb (Duration: 8.4ms | Allocations: 1608)
+  Rendered articles/show.html.erb within layouts/application (Duration: 299.0ms | Allocations: 51470)
+  Rendered layout layouts/application.html.erb (Duration: 303.4ms | Allocations: 52675)
+Completed 200 OK in 320ms (Views: 190.7ms | ActiveRecord: 116.4ms | Allocations: 55286)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MiwicHVyIjoiYmxvYl9pZCJ9fQ==--5cfc04eebc5256f415ad19525349181548a0d614/me.jpg" for 127.0.0.1 at 2024-07-23 13:18:27 +0300
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MiwicHVyIjoiYmxvYl9pZCJ9fQ==--5cfc04eebc5256f415ad19525349181548a0d614", "filename"=>"me"}
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: q8t2nn468zl9ptwnlivwvngcm6jr (http://127.0.0.1:3005/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJxOHQybm40Njh6bDlwdHdubGl2d3ZuZ2NtNmpyIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwibWUuanBnXCI7IGZpbGVuYW1lKj1VVEYtOCcnbWUuanBnIiwiY29udGVudF90eXBlIjoiaW1hZ2UvanBlZyIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjQtMDctMjNUMTA6MjM6MjcuMjU3WiIsInB1ciI6ImJsb2Jfa2V5In19--41720803a4043c56ea0ed80d5999b4fc35c899df/me.jpg)[0m
+Redirected to http://127.0.0.1:3005/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJxOHQybm40Njh6bDlwdHdubGl2d3ZuZ2NtNmpyIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwibWUuanBnXCI7IGZpbGVuYW1lKj1VVEYtOCcnbWUuanBnIiwiY29udGVudF90eXBlIjoiaW1hZ2UvanBlZyIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjQtMDctMjNUMTA6MjM6MjcuMjU3WiIsInB1ciI6ImJsb2Jfa2V5In19--41720803a4043c56ea0ed80d5999b4fc35c899df/me.jpg
+Completed 302 Found in 11ms (ActiveRecord: 1.0ms | Allocations: 2459)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJxOHQybm40Njh6bDlwdHdubGl2d3ZuZ2NtNmpyIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwibWUuanBnXCI7IGZpbGVuYW1lKj1VVEYtOCcnbWUuanBnIiwiY29udGVudF90eXBlIjoiaW1hZ2UvanBlZyIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjQtMDctMjNUMTA6MjM6MjcuMjU3WiIsInB1ciI6ImJsb2Jfa2V5In19--41720803a4043c56ea0ed80d5999b4fc35c899df/me.jpg" for 127.0.0.1 at 2024-07-23 13:18:27 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"me"}
+Completed 200 OK in 3ms (ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/articles" for 127.0.0.1 at 2024-07-23 13:18:32 +0300
+Processing by ArticlesController#index as HTML
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode at D:/blogpg/lib/json_web_token.rb:12)
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode at D:/blogpg/lib/json_web_token.rb:12)
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode at D:/blogpg/lib/json_web_token.rb:12)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `load_current_user!'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Count (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."status" = $1[0m  [["status", "public"]]
+  ↳ app/models/concerns/visible.rb:12:in `public_count'
+  [1m[36mArticle Load (2.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:91
+  Rendered articles/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 1052)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 2377)
+Completed 200 OK in 29ms (Views: 13.3ms | ActiveRecord: 5.8ms | Allocations: 3902)
+
+
+Started GET "/" for 127.0.0.1 at 2024-07-23 14:59:17 +0300
+  
+ActiveRecord::ConnectionNotEstablished (connection to server at "::1", port 5434 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+):
+  
+activerecord (7.1.3.4) lib/active_record/connection_adapters/postgresql_adapter.rb:80:in `rescue in new_client'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/postgresql_adapter.rb:68:in `new_client'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/postgresql_adapter.rb:980:in `connect'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/postgresql_adapter.rb:992:in `reconnect'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract_adapter.rb:685:in `block in reconnect!'
+activesupport (7.1.3.4) lib/active_support/concurrency/null_lock.rb:9:in `synchronize'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract_adapter.rb:684:in `reconnect!'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract_adapter.rb:788:in `verify!'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract_adapter.rb:795:in `connect!'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract_adapter.rb:1001:in `block in with_raw_connection'
+activesupport (7.1.3.4) lib/active_support/concurrency/null_lock.rb:9:in `synchronize'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract_adapter.rb:1000:in `with_raw_connection'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract_adapter.rb:1113:in `valid_raw_connection'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/postgresql_adapter.rb:616:in `get_database_version'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/schema_cache.rb:374:in `database_version'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/schema_cache.rb:70:in `database_version'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/schema_cache.rb:200:in `database_version'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract_adapter.rb:871:in `database_version'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/postgresql_adapter.rb:644:in `check_version'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:678:in `new_connection'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:723:in `checkout_new_connection'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:702:in `try_to_checkout_new_connection'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:654:in `acquire_connection'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `checkout'
+activerecord (7.1.3.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:182:in `connection'
+activerecord (7.1.3.4) lib/active_record/migration/pending_migration_connection.rb:8:in `establish_temporary_connection'
+activerecord (7.1.3.4) lib/active_record/migration.rb:774:in `block in pending_migrations'
+activerecord (7.1.3.4) lib/active_record/migration.rb:773:in `each'
+activerecord (7.1.3.4) lib/active_record/migration.rb:773:in `pending_migrations'
+activerecord (7.1.3.4) lib/active_record/migration.rb:752:in `check_pending_migrations'
+activerecord (7.1.3.4) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.3.4) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.3.4) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.3.4) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2024-07-23 15:33:50 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 68.4ms | Allocations: 4804)
+  Rendered layout layouts/application.html.erb (Duration: 190.5ms | Allocations: 39218)
+Completed 200 OK in 446ms (Views: 204.6ms | ActiveRecord: 31.1ms | Allocations: 68169)
 
 

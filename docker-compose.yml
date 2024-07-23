@@ -6,14 +6,14 @@ services:
       - db_pg_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d
     ports:
-      - "5434:5432"
+      - "5440:5432"
     environment:
       POSTGRES_PASSWORD: blogpg
 
   redis:
     image: redis:latest
     ports:
-      - "6379:6379"
+      - "6380:6380"
 
   sidekiq:
     build: .
@@ -28,11 +28,12 @@ services:
       - .env
   web:
     build: .
+    entrypoint: ["/rails/bin/docker-entrypoint.sh"]
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
     volumes:
       - .:/myapp
     ports:
-      - "3000:3000"
+      - "3002:3002"
     depends_on:
       - database
       - redis
