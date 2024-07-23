@@ -8,7 +8,6 @@ class ArticlesController < ApplicationController
     end
   
     def show
-      puts "ffffffffffffffff #{@article.tags}"
     end
   
     def new

@@ -32,6 +32,7 @@ RUN bundle install && \
 # Copy application code
 
 # Copy entrypoint script
+
 COPY bin/docker-entrypoint.sh /rails/bin/
 RUN chmod +x /rails/bin/docker-entrypoint.sh
 
